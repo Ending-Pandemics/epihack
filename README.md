@@ -7,6 +7,17 @@ Hosted by the [Ending Pandemics Academy](https://endingpandemicsacademy.arizona.
 
 This repository is the shared home for code, prototypes, and supporting materials produced during EpiHack Arizona.
 
+## 🔗 Quick links for participants
+
+| Resource | Link |
+|----------|------|
+| 🌐 **EpiHack Arizona Library** (data sources, API docs, references) | https://arizona.epihack.org/ |
+| 💬 **Discord server** (chat, announcements, project channels) | https://discord.gg/cjY3hfxkv |
+| 📂 **Shared Google Drive** (slides, schedule, working docs) | [Open folder](https://drive.google.com/drive/folders/1hJbTUuIn0LiDQQgRvnGauQ38ry7ibtTF?usp=sharing) |
+| 🐙 **This GitHub repository** | https://github.com/Ending-Pandemics/epihack |
+
+**Drive permissions:** general participants have *commenter* access. Organizers have *editor* access — request a role change on Discord if needed.
+
 ---
 
 ## About the event
