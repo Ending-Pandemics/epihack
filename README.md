@@ -1,2 +1,39 @@
-# Epihack Arizona
-EpiHack Arizona — a 5-day sprint (May 18–22, 2026) where technologists and One Health experts build digital tools for community-driven health event reporting across Arizona. Hosted by the Ending Pandemics Academy, University of Arizona. All outputs CC BY-NC 4.0.
+# EpiHack Arizona
+
+**Where tech meets One Health.**  
+
+May 18–22, 2026 · Health Sciences Innovation Building, University of Arizona, Tucson AZ.  
+Hosted by the [Ending Pandemics Academy](https://endingpandemicsacademy.arizona.edu/).
+
+This repository is the shared home for code, prototypes, and supporting materials produced during EpiHack Arizona.
+
+---
+
+## About the event
+
+EpiHack is not a conference. It is a five-day, hands-on sprint where technologists and One Health experts sit at the same table and build working prototypes for real public health problems. The format was created by the Ending Pandemics Academy and has been run in multiple countries over the past decade.
+
+The Arizona edition focuses on a tool that communities across the state can use to report health events as they happen, and to receive back timely information that helps prevent illness and slow the spread of infection.
+
+The work is grounded in the **One Health** framework: human, animal, and environmental health are connected, and the earliest signals of an outbreak often show up at those intersections — unusual animal mortality, environmental stressors, human symptoms clustering in unexpected ways. Participatory surveillance puts communities at the front line of detection.
+
+## Who is in the room
+
+Two groups, working side by side:
+
+- **Technologists** — software developers (full-stack, frontend, backend, mobile), AI/ML engineers, LLM practitioners (fine-tuning, prompt engineering, RAG), UX and product designers, and people with experience building digital health platforms. No prior public health background required.
+- **One Health experts** (by invitation) — epidemiologists, veterinarians, environmental health scientists, health communicators, and field practitioners who bring the domain knowledge and the community trust that keep the prototypes realistic.
+
+## The five days
+
+| Day | Date | Focus |
+|-----|------|-------|
+| 1 | May 18 | Kickoff, team formation, challenge briefs, problem framing |
+| 2 | May 19 | Discovery, user needs, data landscape, wireframes |
+| 3 | May 20 | Build sprint, prototype development, mentor office hours |
+| 4 | May 21 | Iteration, community feedback, demo prep |
+| 5 | May 22 | Demo day, presentations, judging panel, pathways to implementation |
+
+## Repository structure
+
+Each team should add their work under `/projects/` with a short, descriptive folder name:
