@@ -1,0 +1,43 @@
+# OS files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editor / IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Environment & secrets — DO NOT COMMIT
+.env
+.env.local
+.env.*.local
+*.pem
+*.key
+secrets/
+credentials.json
+
+# Logs
+*.log
+logs/
+
+# Dependencies (common)
+node_modules/
+__pycache__/
+*.pyc
+.venv/
+venv/
+env/
+
+# Build outputs
+dist/
+build/
+out/
+*.egg-info/
+
+# Sensitive / large data — protect by default
+data/raw/
+data/private/
+*.csv.bak
