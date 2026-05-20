@@ -18,6 +18,7 @@ services:
       - epidemic_net
 
   backend:
+    env_file: .env
     build:
       context: ./backend
       dockerfile: Dockerfile
