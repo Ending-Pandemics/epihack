@@ -1,0 +1,30 @@
+name: Deploy HealthMind to AWS
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Deploy to AWS EC2
+        uses: appleboy/ssh-action@master
+        with:
+          host:     ${{ secrets.AWS_HOST }}
+          username: ${{ secrets.AWS_USER }}
+          key:      ${{ secrets.AWS_SSH_KEY }}
+          script: |
+            cd ~/healthmind
+            git pull origin main
+            docker build -t healthmind .
+            docker stop healthmind || true
+            docker rm healthmind   || true
+            docker run -d \
+              -p 8000:8000 \
+              -e LLAMA_API_KEY="${{ secrets.LLAMA_API_KEY }}" \
+              --restart always \
+              --name healthmind \
+              healthmind
+            echo "HealthMind deployed successfully"
