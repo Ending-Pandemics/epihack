@@ -113,7 +113,7 @@ export default function HomeScreen() {
   const SLabel = ({ children, icon }: { children: string; icon?: keyof typeof Ionicons.glyphMap }) => (
     <View style={{ flexDirection: 'row', alignItems: 'center', gap: 6, marginTop: 28, marginBottom: 10 }}>
       {icon && <Ionicons name={icon} size={13} color={t.sub} />}
-      <Text style={{ color: t.sub, fontSize: 11, fontWeight: '600', textTransform: 'uppercase', letterSpacing: 1.2 }}>{children}</Text>
+      <Text style={{ color: t.sub, fontSize: 12, fontFamily: 'Manrope_700Bold', textTransform: 'uppercase', letterSpacing: 1.5 }}>{children}</Text>
     </View>
   );
 
@@ -144,12 +144,12 @@ export default function HomeScreen() {
                 backgroundColor: '#E8F5E9', opacity: pulse1, transform: [{ scale: pulse1 }],
               }} />
               <Animated.View style={{ opacity: textOpacity, transform: [{ translateY: textSlide }] }}>
-                <Text style={{ fontSize: 48, letterSpacing: -1.5, color: '#111' }}>
-                  <Text style={{ fontWeight: '300' }}>One</Text>
-                  <Text style={{ fontWeight: '800', color: '#0B6623' }}>Health</Text>
+                <Text style={{ fontFamily: 'Manrope_400Regular',  fontSize: 48, letterSpacing: -1.5, color: '#111' }}>
+                  <Text style={{ fontFamily: 'Manrope_300Light' }}>One</Text>
+                  <Text style={{ fontFamily: 'Manrope_800ExtraBold', color: '#0B6623' }}>Health</Text>
                 </Text>
               </Animated.View>
-              <Animated.Text style={{ opacity: tagOpacity, color: '#888', marginTop: 8, fontSize: 13, letterSpacing: 1.5, textTransform: 'uppercase' }}>
+              <Animated.Text style={{ fontFamily: 'Manrope_400Regular',  opacity: tagOpacity, color: '#888', marginTop: 8, fontSize: 13, letterSpacing: 1.5, textTransform: 'uppercase' }}>
                 Arizona
               </Animated.Text>
             </Animated.View>
@@ -167,19 +167,19 @@ export default function HomeScreen() {
           {/* ─── Header ──────────────────────────────────────── */}
           <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', paddingHorizontal: 24, paddingTop: 8, paddingBottom: 4 }}>
             <View>
-              <Text style={{ fontSize: 28, letterSpacing: -1.2 }}>
-                <Text style={{ color: t.hint, fontWeight: '300' }}>One</Text>
-                <Text style={{ color: t.accent, fontWeight: '800' }}>Health</Text>
+              <Text style={{ fontFamily: 'Manrope_400Regular',  fontSize: 32, letterSpacing: -1.5 }}>
+                <Text style={{ color: t.hint, fontFamily: 'Manrope_300Light' }}>One</Text>
+                <Text style={{ color: t.accent, fontFamily: 'Manrope_800ExtraBold' }}>Health</Text>
               </Text>
               <View style={{ flexDirection: 'row', alignItems: 'center', gap: 4, marginTop: 2 }}>
                 <Ionicons name="location-outline" size={12} color={t.sub} />
-                <Text style={{ color: t.sub, fontSize: 13 }}>Tucson, AZ · {zip}</Text>
+                <Text style={{ fontFamily: 'Manrope_400Regular',  color: t.sub, fontSize: 13 }}>Tucson, AZ · {zip}</Text>
               </View>
             </View>
             <View style={{ flexDirection: 'row', gap: 8, alignItems: 'center' }}>
               <View style={{ flexDirection: 'row', alignItems: 'center', gap: 4, backgroundColor: '#FFF3E0', paddingHorizontal: 10, height: 38, borderRadius: 11, borderWidth: 1.5, borderColor: '#FFE0B2' }}>
                 <Ionicons name="flame" size={16} color="#F57C00" />
-                <Text style={{ fontSize: 14, fontWeight: '800', color: '#F57C00' }}>3</Text>
+                <Text style={{ fontSize: 14, fontFamily: 'Manrope_800ExtraBold', color: '#F57C00' }}>3</Text>
               </View>
 
               <TouchableOpacity onPress={() => { Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light); router.push('/notifications'); }}
@@ -205,8 +205,8 @@ export default function HomeScreen() {
                   <Ionicons name={v.icon} size={16} color={t.sub} />
                 </View>
                 <View>
-                  <Text style={{ color: t.text, fontSize: 14, fontWeight: '600' }}>{v.value}</Text>
-                  <Text style={{ color: t.hint, fontSize: 10, marginTop: 1 }}>{v.label}</Text>
+                  <Text style={{ color: t.text, fontSize: 15, fontFamily: 'Manrope_700Bold', letterSpacing: -0.3 }}>{v.value}</Text>
+                  <Text style={{ color: t.hint, fontSize: 11, fontFamily: 'Manrope_500Medium', marginTop: 1 }}>{v.label}</Text>
                 </View>
               </View>
             ))}
@@ -233,12 +233,12 @@ export default function HomeScreen() {
                   }}>
                     <Ionicons name={d.icon} size={16} color={on ? t.accent : t.sub} />
                   </View>
-                  <Text style={{ flex: 1, color: t.text, fontSize: 15, fontWeight: '500' }}>{d.name}</Text>
-                  <Text style={{ color: d.alert ? t.accent : d.warn ? '#C07900' : t.hint, fontSize: 13, fontWeight: d.alert || d.warn ? '600' : '400' }}>{d.status}</Text>
+                  <Text style={{ flex: 1, color: t.text, fontSize: 16, fontFamily: 'Manrope_600SemiBold', letterSpacing: -0.3 }}>{d.name}</Text>
+                  <Text style={{ color: d.alert ? t.accent : d.warn ? '#C07900' : t.hint, fontSize: 14, fontFamily: d.alert || d.warn ? 'Manrope_700Bold' : 'Manrope_500Medium' }}>{d.status}</Text>
                 </TouchableOpacity>
               );
             })}
-            <Text style={{ color: t.hint, fontSize: 11, marginTop: 4, paddingHorizontal: 4 }}>Based on 47 reports this week</Text>
+            <Text style={{ fontFamily: 'Manrope_400Regular',  color: t.hint, fontSize: 11, marginTop: 4, paddingHorizontal: 4 }}>Based on 47 reports this week</Text>
           </View>
 
           {/* ─── Alert ────────────────────────────────────────── */}
@@ -255,8 +255,8 @@ export default function HomeScreen() {
                 <Ionicons name="warning" size={18} color="#E65100" />
               </View>
               <View style={{ flex: 1 }}>
-                <Text style={{ fontSize: 14, color: t.text, fontWeight: '600' }}>Respiratory anomaly in {zip}</Text>
-                <Text style={{ fontSize: 12, color: t.sub, marginTop: 2 }}>225% above baseline · Accelerating</Text>
+                <Text style={{ fontSize: 16, color: t.text, fontFamily: 'Manrope_700Bold', letterSpacing: -0.4 }}>Respiratory anomaly in {zip}</Text>
+                <Text style={{ fontSize: 13, color: '#E65100', fontFamily: 'Manrope_500Medium', marginTop: 2 }}>225% above baseline · Accelerating</Text>
               </View>
               <Ionicons name="chevron-forward" size={16} color={t.hint} />
             </TouchableOpacity>
@@ -266,10 +266,10 @@ export default function HomeScreen() {
           <View style={{ paddingHorizontal: 24 }}>
             <SLabel icon="analytics-outline">Forecast</SLabel>
             <View style={{ backgroundColor: t.card, borderRadius: 14, padding: 16 }}>
-              <Text style={{ color: t.sub, fontSize: 14, lineHeight: 21 }}>
+              <Text style={{ color: t.sub, fontSize: 15, lineHeight: 22, fontFamily: 'Manrope_400Regular', letterSpacing: -0.2 }}>
                 Stomach illness historically rises during finals week. Last year saw a 180% increase.
               </Text>
-              <Text style={{ color: t.accent, fontSize: 13, fontWeight: '600', marginTop: 8 }}>Elevated risk — next 5 days</Text>
+              <Text style={{ color: t.accent, fontSize: 14, fontFamily: 'Manrope_600SemiBold', marginTop: 8 }}>Elevated risk — next 5 days</Text>
             </View>
           </View>
 
@@ -294,7 +294,7 @@ export default function HomeScreen() {
                   <View style={{ width: 38, height: 38, borderRadius: 11, backgroundColor: t.fill, alignItems: 'center', justifyContent: 'center' }}>
                     <Ionicons name={a.icon} size={18} color={t.sub} />
                   </View>
-                  <Text style={{ fontSize: 12, color: t.sub, fontWeight: '500' }}>{a.label}</Text>
+                  <Text style={{ fontSize: 13, color: t.sub, fontFamily: 'Manrope_600SemiBold' }}>{a.label}</Text>
                 </TouchableOpacity>
               ))}
             </View>
@@ -304,9 +304,9 @@ export default function HomeScreen() {
           <View style={{ paddingHorizontal: 24 }}>
             <SLabel icon="trophy-outline">Your impact</SLabel>
             <View style={{ backgroundColor: t.card, borderRadius: 14, paddingVertical: 18, alignItems: 'center' }}>
-              <Text style={{ color: t.hint, fontSize: 10, fontWeight: '600', letterSpacing: 1, textTransform: 'uppercase', marginBottom: 4 }}>Reports submitted</Text>
-              <Text style={{ color: t.text, fontSize: 32, fontWeight: '700' }}>{stats.count || 0}</Text>
-              <Text style={{ color: t.sub, fontSize: 12, marginTop: 4 }}>
+              <Text style={{ color: t.hint, fontSize: 11, fontFamily: 'Manrope_700Bold', letterSpacing: 1.2, textTransform: 'uppercase', marginBottom: 4 }}>Reports submitted</Text>
+              <Text style={{ color: t.text, fontSize: 40, fontFamily: 'Manrope_800ExtraBold', letterSpacing: -1.5 }}>{stats.count || 0}</Text>
+              <Text style={{ color: t.sub, fontSize: 13, fontFamily: 'Manrope_500Medium', marginTop: 4 }}>
                 {stats.streak > 0 ? `${stats.streak} week streak` : 'Start reporting weekly'}
               </Text>
             </View>
@@ -325,30 +325,21 @@ export default function HomeScreen() {
                   <Ionicons name={r.icon} size={15} color={t.hint} />
                 </View>
                 <View style={{ flex: 1 }}>
-                  <Text style={{ fontSize: 14, color: t.text, fontWeight: '500' }}>{r.title}</Text>
-                  <Text style={{ fontSize: 11, color: t.hint, marginTop: 2 }}>{r.sub}</Text>
+                  <Text style={{ fontSize: 15, color: t.text, fontFamily: 'Manrope_600SemiBold', letterSpacing: -0.3 }}>{r.title}</Text>
+                  <Text style={{ fontSize: 12, color: t.hint, fontFamily: 'Manrope_500Medium', marginTop: 2 }}>{r.sub}</Text>
                 </View>
-                <Text style={{ fontSize: 11, color: t.hint }}>{r.time}</Text>
+                <Text style={{ fontFamily: 'Manrope_400Regular',  fontSize: 11, color: t.hint }}>{r.time}</Text>
               </View>
             ))}
             <TouchableOpacity style={{ paddingHorizontal: 4, marginTop: 4 }}
               onPress={() => Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light)}>
-              <Text style={{ color: t.accent, fontSize: 13, fontWeight: '500' }}>See all reports</Text>
+              <Text style={{ color: t.accent, fontSize: 13, fontFamily: 'Manrope_500Medium' }}>See all reports</Text>
             </TouchableOpacity>
           </View>
 
         </ScrollView>
 
-        {/* ─── FAB ─────────────────────────────────────────── */}
-        <TouchableOpacity activeOpacity={0.8}
-          onPress={() => { Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium); router.push('/report-modal'); }}
-          style={{
-            position: 'absolute', bottom: 20, right: 20,
-            width: 50, height: 50, borderRadius: 25, backgroundColor: t.accent,
-            alignItems: 'center', justifyContent: 'center',
-          }}>
-          <Ionicons name="add" size={24} color="#FFF" />
-        </TouchableOpacity>
+
 
         {/* ─── Success Toast ─────────────────────────────────── */}
         {showSuccess && (
@@ -363,8 +354,8 @@ export default function HomeScreen() {
               <Ionicons name="checkmark" size={16} color={t.accent} />
             </View>
             <View>
-              <Text style={{ color: '#FFF', fontSize: 14, fontWeight: '600' }}>Report submitted!</Text>
-              <Text style={{ color: t.accentMid, fontSize: 11, marginTop: 1 }}>Thank you for protecting your community</Text>
+              <Text style={{ color: '#FFF', fontSize: 14, fontFamily: 'Manrope_600SemiBold' }}>Report submitted!</Text>
+              <Text style={{ fontFamily: 'Manrope_400Regular',  color: t.accentMid, fontSize: 11, marginTop: 1 }}>Thank you for protecting your community</Text>
             </View>
           </Animated.View>
         )}

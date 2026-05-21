@@ -59,7 +59,7 @@ export default function ProfileScreen() {
   const SLabel = ({ children, icon }: { children: string; icon?: keyof typeof Ionicons.glyphMap }) => (
     <View style={{ flexDirection: 'row', alignItems: 'center', gap: 6, marginTop: 28, marginBottom: 10 }}>
       {icon && <Ionicons name={icon} size={13} color={t.sub} />}
-      <Text style={{ color: t.sub, fontSize: 11, fontWeight: '600', textTransform: 'uppercase', letterSpacing: 1.2 }}>{children}</Text>
+      <Text style={{ color: t.sub, fontSize: 11, fontFamily: 'Manrope_600SemiBold', textTransform: 'uppercase', letterSpacing: 1.2 }}>{children}</Text>
     </View>
   );
 
@@ -75,8 +75,8 @@ export default function ProfileScreen() {
       <View style={{ width: 34, height: 34, borderRadius: 10, backgroundColor: t.fill, alignItems: 'center', justifyContent: 'center' }}>
         <Ionicons name={icon} size={16} color={t.sub} />
       </View>
-      <Text style={{ flex: 1, fontSize: 15, color: t.text, fontWeight: '500' }}>{label}</Text>
-      {right && <Text style={{ fontSize: 13, color: t.hint, marginRight: 4 }}>{right}</Text>}
+      <Text style={{ flex: 1, fontSize: 15, color: t.text, fontFamily: 'Manrope_500Medium' }}>{label}</Text>
+      {right && <Text style={{ fontFamily: 'Manrope_400Regular',  fontSize: 13, color: t.hint, marginRight: 4 }}>{right}</Text>}
       {onPress && <Ionicons name="chevron-forward" size={14} color={t.hint} />}
     </TouchableOpacity>
   );
@@ -89,7 +89,7 @@ export default function ProfileScreen() {
       <SafeAreaView style={{ flex: 1 }} edges={['top']}>
         <ScrollView showsVerticalScrollIndicator={false} contentContainerStyle={{ paddingHorizontal: 24, paddingBottom: 60 }}>
 
-          <Text style={{ fontSize: 28, fontWeight: '700', color: t.text, letterSpacing: -0.6, paddingTop: 8 }}>Profile</Text>
+          <Text style={{ fontSize: 28, fontFamily: 'Manrope_700Bold', color: t.text, letterSpacing: -0.6, paddingTop: 8 }}>Profile</Text>
 
           {/* Avatar */}
           <View style={{
@@ -102,20 +102,20 @@ export default function ProfileScreen() {
               alignItems: 'center', justifyContent: 'center',
             }}>
               {isLoggedIn
-                ? <Text style={{ color: t.accent, fontSize: 22, fontWeight: '700' }}>{(profile.name || 'R')[0].toUpperCase()}</Text>
+                ? <Text style={{ color: t.accent, fontSize: 22, fontFamily: 'Manrope_700Bold' }}>{(profile.name || 'R')[0].toUpperCase()}</Text>
                 : <Ionicons name="person" size={22} color={t.hint} />}
             </View>
             <View style={{ flex: 1 }}>
-              <Text style={{ fontSize: 17, fontWeight: '600', color: t.text }}>
+              <Text style={{ fontSize: 17, fontFamily: 'Manrope_600SemiBold', color: t.text }}>
                 {isLoggedIn ? (profile.name || 'Reporter') : 'Anonymous Reporter'}
               </Text>
-              <Text style={{ fontSize: 12, color: t.sub, marginTop: 2 }}>Tucson, AZ</Text>
+              <Text style={{ fontFamily: 'Manrope_400Regular',  fontSize: 12, color: t.sub, marginTop: 2 }}>Tucson, AZ</Text>
             </View>
             {!isLoggedIn && (
               <TouchableOpacity activeOpacity={0.8}
                 onPress={() => { Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light); router.push({ pathname: '/auth-modal', params: { mode: 'signup' } }); }}
                 style={{ backgroundColor: t.accent, borderRadius: 10, paddingVertical: 8, paddingHorizontal: 14 }}>
-                <Text style={{ color: '#FFF', fontSize: 13, fontWeight: '600' }}>Sign Up</Text>
+                <Text style={{ color: '#FFF', fontSize: 13, fontFamily: 'Manrope_600SemiBold' }}>Sign Up</Text>
               </TouchableOpacity>
             )}
           </View>
@@ -123,9 +123,9 @@ export default function ProfileScreen() {
           {/* Stats */}
           <SLabel icon="trophy-outline">Your impact</SLabel>
           <View style={{ backgroundColor: t.card, borderRadius: 14, paddingVertical: 18, alignItems: 'center' }}>
-            <Text style={{ color: t.hint, fontSize: 10, fontWeight: '600', letterSpacing: 1, textTransform: 'uppercase', marginBottom: 4 }}>Reports submitted</Text>
-            <Text style={{ color: t.text, fontSize: 32, fontWeight: '700' }}>{stats.count}</Text>
-            <Text style={{ color: t.sub, fontSize: 12, marginTop: 4 }}>
+            <Text style={{ color: t.hint, fontSize: 10, fontFamily: 'Manrope_600SemiBold', letterSpacing: 1, textTransform: 'uppercase', marginBottom: 4 }}>Reports submitted</Text>
+            <Text style={{ color: t.text, fontSize: 32, fontFamily: 'Manrope_700Bold' }}>{stats.count}</Text>
+            <Text style={{ fontFamily: 'Manrope_400Regular',  color: t.sub, fontSize: 12, marginTop: 4 }}>
               {stats.streak > 0 ? `${stats.streak} week streak` : 'Start reporting weekly'}
             </Text>
           </View>
@@ -135,7 +135,7 @@ export default function ProfileScreen() {
           {reports.length === 0 ? (
             <View style={{ backgroundColor: t.card, borderRadius: 14, padding: 20, alignItems: 'center' }}>
               <Ionicons name="document-outline" size={22} color={t.hint} />
-              <Text style={{ color: t.hint, fontSize: 13, marginTop: 6 }}>No reports yet</Text>
+              <Text style={{ fontFamily: 'Manrope_400Regular',  color: t.hint, fontSize: 13, marginTop: 6 }}>No reports yet</Text>
             </View>
           ) : (
             reports.slice(0, 3).map((r, i) => (
@@ -148,13 +148,13 @@ export default function ProfileScreen() {
                   <Ionicons name={catIcon(r.category)} size={14} color={t.hint} />
                 </View>
                 <View style={{ flex: 1 }}>
-                  <Text style={{ fontSize: 14, color: t.text, fontWeight: '500' }}>
+                  <Text style={{ fontSize: 14, color: t.text, fontFamily: 'Manrope_500Medium' }}>
                     {r.symptoms?.slice(0, 2).join(', ') || r.observations?.slice(0, 2).join(', ') || r.feeling}
                   </Text>
-                  <Text style={{ fontSize: 11, color: t.hint, marginTop: 2 }}>{r.date}</Text>
+                  <Text style={{ fontFamily: 'Manrope_400Regular',  fontSize: 11, color: t.hint, marginTop: 2 }}>{r.date}</Text>
                 </View>
                 <View style={{ backgroundColor: t.accentSoft, borderRadius: 6, paddingHorizontal: 8, paddingVertical: 3, borderWidth: 1.5, borderColor: t.accent }}>
-                  <Text style={{ color: t.accent, fontSize: 10, fontWeight: '600' }}>Sent</Text>
+                  <Text style={{ color: t.accent, fontSize: 10, fontFamily: 'Manrope_600SemiBold' }}>Sent</Text>
                 </View>
               </View>
             ))
@@ -175,7 +175,7 @@ export default function ProfileScreen() {
             <View style={{ width: 34, height: 34, borderRadius: 10, backgroundColor: t.fill, alignItems: 'center', justifyContent: 'center' }}>
               <Ionicons name="notifications-outline" size={16} color={t.sub} />
             </View>
-            <Text style={{ flex: 1, fontSize: 15, color: t.text, fontWeight: '500' }}>Notifications</Text>
+            <Text style={{ flex: 1, fontSize: 15, color: t.text, fontFamily: 'Manrope_500Medium' }}>Notifications</Text>
             <Switch value={notifsOn}
               onValueChange={(v) => { Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light); setNotifsState(v); setNotifsOn(v); }}
               trackColor={{ true: t.accent, false: '#E0E0E0' }} thumbColor="#FFF"
@@ -195,11 +195,11 @@ export default function ProfileScreen() {
           {isLoggedIn && (
             <TouchableOpacity onPress={handleLogout}
               style={{ backgroundColor: t.card, borderRadius: 14, paddingVertical: 14, alignItems: 'center', marginTop: 20 }}>
-              <Text style={{ color: '#E53935', fontSize: 14, fontWeight: '500' }}>Log Out</Text>
+              <Text style={{ color: '#E53935', fontSize: 14, fontFamily: 'Manrope_500Medium' }}>Log Out</Text>
             </TouchableOpacity>
           )}
 
-          <Text style={{ color: t.hint, fontSize: 10, textAlign: 'center', marginTop: 28, lineHeight: 16 }}>
+          <Text style={{ fontFamily: 'Manrope_400Regular',  color: t.hint, fontSize: 10, textAlign: 'center', marginTop: 28, lineHeight: 16 }}>
             v1.0 · Ending Pandemics Academy × UofA{'\n'}Made for Arizona
           </Text>
         </ScrollView>

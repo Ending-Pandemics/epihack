@@ -25,7 +25,7 @@ export default function ComposeScreen() {
             </TouchableOpacity>
             <TouchableOpacity disabled={!text.trim()} onPress={() => { Haptics.notificationAsync(Haptics.NotificationFeedbackType.Success); router.back(); }}
               style={{ backgroundColor: text.trim() ? GREEN : FILL, borderRadius: 18, paddingHorizontal: 18, paddingVertical: 8 }}>
-              <Text style={{ color: text.trim() ? '#FFF' : HINT, fontSize: 14, fontWeight: '600' }}>Post</Text>
+              <Text style={{ color: text.trim() ? '#FFF' : HINT, fontSize: 14, fontFamily: 'Manrope_600SemiBold' }}>Post</Text>
             </TouchableOpacity>
           </View>
           <View style={{ flex: 1, paddingHorizontal: 20 }}>
@@ -39,12 +39,12 @@ export default function ComposeScreen() {
             </TouchableOpacity>
             <View style={{ flexDirection: 'row', alignItems: 'center', gap: 3 }}>
               <Ionicons name="location" size={10} color={HINT} />
-              <Text style={{ color: HINT, fontSize: 12 }}>85719</Text>
+              <Text style={{ fontFamily: 'Manrope_400Regular',  color: HINT, fontSize: 12 }}>85719</Text>
             </View>
             <View style={{ flex: 1 }} />
             <View style={{ flexDirection: 'row', alignItems: 'center', gap: 3 }}>
               <Ionicons name="lock-closed-outline" size={10} color={HINT} />
-              <Text style={{ color: HINT, fontSize: 11 }}>Anonymous</Text>
+              <Text style={{ fontFamily: 'Manrope_400Regular',  color: HINT, fontSize: 11 }}>Anonymous</Text>
             </View>
           </View>
         </KeyboardAvoidingView>

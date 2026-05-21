@@ -28,7 +28,7 @@ export default function NotificationsScreen() {
             style={{ width: 34, height: 34, borderRadius: 10, backgroundColor: t.fill, alignItems: 'center', justifyContent: 'center' }}>
             <Ionicons name="arrow-back" size={18} color={t.text} />
           </TouchableOpacity>
-          <Text style={{ color: t.text, fontSize: 28, fontWeight: '700', letterSpacing: -0.6, marginLeft: 12 }}>Notifications</Text>
+          <Text style={{ color: t.text, fontSize: 28, fontFamily: 'Manrope_700Bold', letterSpacing: -0.6, marginLeft: 12 }}>Notifications</Text>
         </View>
 
         <FlatList
@@ -47,9 +47,9 @@ export default function NotificationsScreen() {
                 <Ionicons name={item.icon} size={16} color={t.sub} />
               </View>
               <View style={{ flex: 1 }}>
-                <Text style={{ fontSize: 14, color: t.text, fontWeight: '500' }}>{item.title}</Text>
-                <Text style={{ fontSize: 12, color: t.sub, marginTop: 2 }}>{item.body}</Text>
-                <Text style={{ fontSize: 11, color: t.hint, marginTop: 4 }}>{item.time}</Text>
+                <Text style={{ fontSize: 14, color: t.text, fontFamily: 'Manrope_500Medium' }}>{item.title}</Text>
+                <Text style={{ fontFamily: 'Manrope_400Regular',  fontSize: 12, color: t.sub, marginTop: 2 }}>{item.body}</Text>
+                <Text style={{ fontFamily: 'Manrope_400Regular',  fontSize: 11, color: t.hint, marginTop: 4 }}>{item.time}</Text>
               </View>
             </TouchableOpacity>
           )}

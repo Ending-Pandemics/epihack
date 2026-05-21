@@ -200,13 +200,11 @@ export default function MapScreen() {
           />
         </View>
 
-        {/* Content Below Map */}
         <View style={{ flex: 1 }}>
           <View style={{ paddingHorizontal: 24, paddingTop: 20, paddingBottom: 16 }}>
-            <Text style={{ fontSize: 28, fontWeight: '700', color: t.text, letterSpacing: -0.6 }}>State Stats</Text>
             <View style={{ flexDirection: 'row', alignItems: 'center', gap: 4, marginTop: 4 }}>
-              <Ionicons name="location-outline" size={12} color={t.sub} />
-              <Text style={{ color: t.sub, fontSize: 13 }}>Arizona, US</Text>
+              <Ionicons name="location-outline" size={14} color={t.sub} />
+              <Text style={{ color: t.sub, fontSize: 14, fontFamily: 'Manrope_500Medium' }}>Arizona, US</Text>
             </View>
           </View>
 
@@ -214,8 +212,8 @@ export default function MapScreen() {
             <View style={{ paddingHorizontal: 24, flex: 1 }}>
               <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: 20 }}>
                 <View>
-                  <Text style={{ fontSize: 22, fontWeight: '700', color: t.text }}>{selArea.name}</Text>
-                  <Text style={{ fontSize: 13, color: t.sub, marginTop: 2 }}>{selArea.zip}</Text>
+                  <Text style={{ fontSize: 24, fontFamily: 'Manrope_800ExtraBold', color: t.text, letterSpacing: -0.5 }}>{selArea.name}</Text>
+                  <Text style={{ fontSize: 14, fontFamily: 'Manrope_500Medium', color: t.sub, marginTop: 2 }}>{selArea.zip}</Text>
                 </View>
                 <TouchableOpacity onPress={() => { Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light); setSelected(null); }} 
                   style={{ width: 32, height: 32, borderRadius: 16, backgroundColor: t.fill, alignItems: 'center', justifyContent: 'center' }}>
@@ -225,16 +223,16 @@ export default function MapScreen() {
               
               <View style={{ flexDirection: 'row', gap: 12 }}>
                 <View style={{ flex: 1, backgroundColor: t.card, borderWidth: 1.5, borderColor: t.line, borderRadius: 14, padding: 16 }}>
-                  <Text style={{ color: t.sub, fontSize: 11, fontWeight: '600', textTransform: 'uppercase', letterSpacing: 1 }}>Total Reports</Text>
+                  <Text style={{ color: t.sub, fontSize: 12, fontFamily: 'Manrope_700Bold', textTransform: 'uppercase', letterSpacing: 1.2 }}>Total Reports</Text>
                   <View style={{ flexDirection: 'row', alignItems: 'center', gap: 8, marginTop: 8 }}>
-                    <Text style={{ fontSize: 28, fontWeight: '700', color: t.text }}>{selArea.count}</Text>
-                    <Text style={{ fontSize: 13, fontWeight: '600', color: t.sub }}>{selArea.trend}</Text>
+                    <Text style={{ fontSize: 32, fontFamily: 'Manrope_800ExtraBold', color: t.text, letterSpacing: -1 }}>{selArea.count}</Text>
+                    <Text style={{ fontSize: 14, fontFamily: 'Manrope_700Bold', color: t.sub }}>{selArea.trend}</Text>
                   </View>
                 </View>
                 
                 <View style={{ flex: 1, backgroundColor: t.accentSoft, borderWidth: 1.5, borderColor: t.accentMid, borderRadius: 14, padding: 16 }}>
-                  <Text style={{ color: t.accent, fontSize: 11, fontWeight: '600', textTransform: 'uppercase', letterSpacing: 1 }}>Top Issue</Text>
-                  <Text style={{ fontSize: 18, fontWeight: '600', color: t.accent, marginTop: 8 }}>{selArea.top}</Text>
+                  <Text style={{ color: t.accent, fontSize: 12, fontFamily: 'Manrope_700Bold', textTransform: 'uppercase', letterSpacing: 1.2 }}>Top Issue</Text>
+                  <Text style={{ fontSize: 20, fontFamily: 'Manrope_700Bold', color: t.accent, marginTop: 8, letterSpacing: -0.3 }}>{selArea.top}</Text>
                 </View>
               </View>
             </View>
@@ -252,7 +250,7 @@ export default function MapScreen() {
                         backgroundColor: on ? t.text : t.card,
                         borderWidth: 1.5, borderColor: on ? t.text : t.line,
                       }}>
-                      <Text style={{ color: on ? '#FFF' : t.text, fontSize: 13, fontWeight: on ? '600' : '500' }}>{f}</Text>
+                      <Text style={{ color: on ? '#FFF' : t.text, fontSize: 14, fontFamily: on ? 'Manrope_700Bold' : 'Manrope_600SemiBold' }}>{f}</Text>
                     </TouchableOpacity>
                   );
                 })}
@@ -271,10 +269,10 @@ export default function MapScreen() {
                     <Ionicons name="location-outline" size={16} color={t.text} />
                   </View>
                   <View style={{ flex: 1 }}>
-                    <Text style={{ fontSize: 15, color: t.text, fontWeight: '600' }}>{a.name}</Text>
-                    <Text style={{ fontSize: 12, color: t.sub, marginTop: 2 }}>{a.zip} · {a.top}</Text>
+                    <Text style={{ fontSize: 16, color: t.text, fontFamily: 'Manrope_700Bold', letterSpacing: -0.3 }}>{a.name}</Text>
+                    <Text style={{ fontSize: 13, color: t.sub, fontFamily: 'Manrope_500Medium', marginTop: 2 }}>{a.zip} · {a.top}</Text>
                   </View>
-                  <Text style={{ fontSize: 16, color: t.text, fontWeight: '700' }}>{a.count}</Text>
+                  <Text style={{ fontSize: 18, color: t.text, fontFamily: 'Manrope_800ExtraBold' }}>{a.count}</Text>
                   <Ionicons name="chevron-forward" size={14} color={t.hint} />
                 </TouchableOpacity>
               ))}

@@ -36,10 +36,10 @@ export default function CommunityScreen() {
     <View style={{ flex: 1, backgroundColor: t.bg }}>
       <SafeAreaView style={{ flex: 1 }} edges={['top']}>
         <View style={{ paddingHorizontal: 24, paddingTop: 8, paddingBottom: 10 }}>
-          <Text style={{ fontSize: 28, fontWeight: '700', color: t.text, letterSpacing: -0.6 }}>Community</Text>
+          <Text style={{ fontSize: 28, fontFamily: 'Manrope_700Bold', color: t.text, letterSpacing: -0.6 }}>Community</Text>
           <View style={{ flexDirection: 'row', alignItems: 'center', gap: 4, marginTop: 2 }}>
             <Ionicons name="location-outline" size={12} color={t.sub} />
-            <Text style={{ color: t.sub, fontSize: 13 }}>Tucson, AZ</Text>
+            <Text style={{ fontFamily: 'Manrope_400Regular',  color: t.sub, fontSize: 13 }}>Tucson, AZ</Text>
           </View>
         </View>
 
@@ -66,23 +66,23 @@ export default function CommunityScreen() {
                 }}>
                   <Ionicons name={item.verified ? 'shield-checkmark' : 'person'} size={11} color={item.verified ? t.accent : t.hint} />
                 </View>
-                <Text style={{ color: t.sub, fontSize: 11 }}>
+                <Text style={{ fontFamily: 'Manrope_400Regular',  color: t.sub, fontSize: 11 }}>
                   {item.verified ? item.author : 'Anonymous'} · {item.area} · {item.time}
                 </Text>
               </View>
 
               {/* Body */}
-              <Text style={{ color: t.text, fontSize: 14, lineHeight: 21 }}>{item.body}</Text>
+              <Text style={{ fontFamily: 'Manrope_400Regular',  color: t.text, fontSize: 14, lineHeight: 21 }}>{item.body}</Text>
 
               {/* Actions */}
               <View style={{ flexDirection: 'row', alignItems: 'center', gap: 16, marginTop: 12 }}>
                 <TouchableOpacity onPress={() => upvote(item.id)} style={{ flexDirection: 'row', alignItems: 'center', gap: 4 }}>
                   <Ionicons name="arrow-up-outline" size={15} color={t.hint} />
-                  <Text style={{ color: t.hint, fontSize: 12, fontWeight: '500' }}>{item.votes}</Text>
+                  <Text style={{ color: t.hint, fontSize: 12, fontFamily: 'Manrope_500Medium' }}>{item.votes}</Text>
                 </TouchableOpacity>
                 <View style={{ flexDirection: 'row', alignItems: 'center', gap: 4 }}>
                   <Ionicons name="chatbubble-outline" size={13} color={t.hint} />
-                  <Text style={{ color: t.hint, fontSize: 12 }}>{item.comments}</Text>
+                  <Text style={{ fontFamily: 'Manrope_400Regular',  color: t.hint, fontSize: 12 }}>{item.comments}</Text>
                 </View>
               </View>
 
@@ -90,7 +90,7 @@ export default function CommunityScreen() {
               {item.aiTag && (
                 <View style={{ flexDirection: 'row', alignItems: 'center', gap: 6, marginTop: 10 }}>
                   <Ionicons name="sparkles-outline" size={12} color={t.accent} />
-                  <Text style={{ color: t.accent, fontSize: 11, fontWeight: '500' }}>{item.aiTag}</Text>
+                  <Text style={{ color: t.accent, fontSize: 11, fontFamily: 'Manrope_500Medium' }}>{item.aiTag}</Text>
                 </View>
               )}
             </TouchableOpacity>

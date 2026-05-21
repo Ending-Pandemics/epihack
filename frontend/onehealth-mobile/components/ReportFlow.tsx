@@ -300,22 +300,22 @@ export default function ReportFlow({ onSignUp }: { onSignUp?: () => void }) {
       borderWidth: 1.5, borderColor: on ? t.text : 'transparent',
     }}>
       {icon && <Ionicons name={icon} size={15} color={on ? t.text : t.sub} />}
-      <Text style={{ color: on ? t.text : t.sub, fontSize: 14, fontWeight: on ? '600' : '500' }}>{label}</Text>
+      <Text style={{ color: on ? t.text : t.sub, fontSize: 14, fontFamily: on ? 'Manrope_600SemiBold' : 'Manrope_500Medium' }}>{label}</Text>
     </TouchableOpacity>
   );
 
   const Heading = ({ children }: { children: string }) => (
-    <Text style={{ color: t.text, fontSize: 28, fontWeight: '700', letterSpacing: -0.6, lineHeight: 34, marginBottom: 6 }}>{children}</Text>
+    <Text style={{ color: t.text, fontSize: 28, fontFamily: 'Manrope_700Bold', letterSpacing: -0.6, lineHeight: 34, marginBottom: 6 }}>{children}</Text>
   );
 
   const Sub = ({ children }: { children: string }) => (
-    <Text style={{ color: t.sub, fontSize: 14, lineHeight: 20, marginBottom: 20 }}>{children}</Text>
+    <Text style={{ fontFamily: 'Manrope_400Regular',  color: t.sub, fontSize: 14, lineHeight: 20, marginBottom: 20 }}>{children}</Text>
   );
 
   const Label = ({ children, icon }: { children: string; icon?: keyof typeof Ionicons.glyphMap }) => (
     <View style={{ flexDirection: 'row', alignItems: 'center', gap: 6, marginTop: 28, marginBottom: 10 }}>
       {icon && <Ionicons name={icon} size={13} color={t.sub} />}
-      <Text style={{ color: t.sub, fontSize: 11, fontWeight: '600', textTransform: 'uppercase', letterSpacing: 1.2 }}>{children}</Text>
+      <Text style={{ color: t.sub, fontSize: 11, fontFamily: 'Manrope_600SemiBold', textTransform: 'uppercase', letterSpacing: 1.2 }}>{children}</Text>
     </View>
   );
 
@@ -352,8 +352,8 @@ export default function ReportFlow({ onSignUp }: { onSignUp?: () => void }) {
                     <Ionicons name={icon} size={20} color={on ? t.accent : t.sub} />
                   </View>
                   <View style={{ flex: 1 }}>
-                    <Text style={{ color: t.text, fontSize: 16, fontWeight: '600' }}>{label}</Text>
-                    <Text style={{ color: t.sub, fontSize: 12, marginTop: 2 }}>{desc}</Text>
+                    <Text style={{ color: t.text, fontSize: 16, fontFamily: 'Manrope_600SemiBold' }}>{label}</Text>
+                    <Text style={{ fontFamily: 'Manrope_400Regular',  color: t.sub, fontSize: 12, marginTop: 2 }}>{desc}</Text>
                   </View>
                   {on && <Ionicons name="checkmark-circle" size={22} color={t.accent} />}
                 </TouchableOpacity>
@@ -392,8 +392,8 @@ export default function ReportFlow({ onSignUp }: { onSignUp?: () => void }) {
                   <Ionicons name={icon} size={18} color={on ? t.accent : t.sub} />
                 </View>
                 <View style={{ flex: 1 }}>
-                  <Text style={{ color: t.text, fontSize: 15, fontWeight: '600' }}>{title}</Text>
-                  <Text style={{ color: t.sub, fontSize: 12, marginTop: 2 }}>{desc}</Text>
+                  <Text style={{ color: t.text, fontSize: 15, fontFamily: 'Manrope_600SemiBold' }}>{title}</Text>
+                  <Text style={{ fontFamily: 'Manrope_400Regular',  color: t.sub, fontSize: 12, marginTop: 2 }}>{desc}</Text>
                 </View>
                 <View style={{
                   width: 20, height: 20, borderRadius: 6, borderWidth: 1.5,
@@ -433,7 +433,7 @@ export default function ReportFlow({ onSignUp }: { onSignUp?: () => void }) {
           <Label icon="people-outline">{loc.how_many}</Label>
           <View style={{ backgroundColor: t.card, borderRadius: 12, paddingHorizontal: 16, flexDirection: 'row', alignItems: 'center' }}>
             <Ionicons name="person-outline" size={16} color={t.hint} style={{ marginRight: 10 }} />
-            <TextInput style={{ flex: 1, color: t.text, fontSize: 16, fontWeight: '600', paddingVertical: 14 }}
+            <TextInput style={{ flex: 1, color: t.text, fontSize: 16, fontFamily: 'Manrope_600SemiBold', paddingVertical: 14 }}
               value={sickCount} onChangeText={v => setSickCount(v.replace(/\D/g, '').slice(0, 3))}
               keyboardType="number-pad" maxLength={3} />
           </View>
@@ -441,12 +441,12 @@ export default function ReportFlow({ onSignUp }: { onSignUp?: () => void }) {
           <Label icon="location-outline">{loc.where}</Label>
           <View style={{ backgroundColor: t.card, borderRadius: 12, paddingHorizontal: 16, flexDirection: 'row', alignItems: 'center' }}>
             <Ionicons name="navigate-outline" size={16} color={t.hint} style={{ marginRight: 10 }} />
-            <TextInput style={{ flex: 1, color: t.text, fontSize: 16, fontWeight: '600', paddingVertical: 14 }}
+            <TextInput style={{ flex: 1, color: t.text, fontSize: 16, fontFamily: 'Manrope_600SemiBold', paddingVertical: 14 }}
               placeholder={loc.zip} placeholderTextColor={t.hint}
               value={zip} onChangeText={v => setZip(v.replace(/\D/g, '').slice(0, 5))}
               keyboardType="number-pad" maxLength={5} />
             <TouchableOpacity onPress={getZip}>
-              <Text style={{ color: t.sub, fontSize: 13, fontWeight: '500' }}>{locL ? '…' : loc.detect}</Text>
+              <Text style={{ color: t.sub, fontSize: 13, fontFamily: 'Manrope_500Medium' }}>{locL ? '…' : loc.detect}</Text>
             </TouchableOpacity>
           </View>
 
@@ -457,7 +457,7 @@ export default function ReportFlow({ onSignUp }: { onSignUp?: () => void }) {
               flexDirection: 'row', alignItems: 'center', justifyContent: 'center', gap: 8,
             }}>
             <Ionicons name={photo ? 'checkmark-circle' : 'image-outline'} size={18} color={photo ? t.green : t.hint} />
-            <Text style={{ color: photo ? t.green : t.sub, fontSize: 14, fontWeight: '500' }}>
+            <Text style={{ color: photo ? t.green : t.sub, fontSize: 14, fontFamily: 'Manrope_500Medium' }}>
               {photo ? loc.photo_added : loc.photo_add}
             </Text>
           </TouchableOpacity>
@@ -505,7 +505,7 @@ export default function ReportFlow({ onSignUp }: { onSignUp?: () => void }) {
                     backgroundColor: on ? t.selBg : t.card,
                     borderWidth: 1.5, borderColor: on ? t.text : 'transparent',
                   }}>
-                  <Text style={{ color: on ? t.text : t.sub, fontSize: 14, fontWeight: '600' }}>{sl}</Text>
+                  <Text style={{ color: on ? t.text : t.sub, fontSize: 14, fontFamily: 'Manrope_600SemiBold' }}>{sl}</Text>
                 </TouchableOpacity>
               );
             })}
@@ -529,12 +529,12 @@ export default function ReportFlow({ onSignUp }: { onSignUp?: () => void }) {
           <Label icon="location-outline">{loc.loc}</Label>
           <View style={{ backgroundColor: t.card, borderRadius: 12, paddingHorizontal: 16, flexDirection: 'row', alignItems: 'center' }}>
             <Ionicons name="navigate-outline" size={16} color={t.hint} style={{ marginRight: 10 }} />
-            <TextInput style={{ flex: 1, color: t.text, fontSize: 16, fontWeight: '600', paddingVertical: 14 }}
+            <TextInput style={{ flex: 1, color: t.text, fontSize: 16, fontFamily: 'Manrope_600SemiBold', paddingVertical: 14 }}
               placeholder={loc.zip} placeholderTextColor={t.hint}
               value={zip} onChangeText={v => setZip(v.replace(/\D/g, '').slice(0, 5))}
               keyboardType="number-pad" maxLength={5} />
             <TouchableOpacity onPress={getZip}>
-              <Text style={{ color: t.sub, fontSize: 13, fontWeight: '500' }}>{locL ? '…' : loc.detect}</Text>
+              <Text style={{ color: t.sub, fontSize: 13, fontFamily: 'Manrope_500Medium' }}>{locL ? '…' : loc.detect}</Text>
             </TouchableOpacity>
           </View>
 
@@ -564,7 +564,7 @@ export default function ReportFlow({ onSignUp }: { onSignUp?: () => void }) {
             <View style={{ width: 50 }}>
               {step > 0 && (
                 <TouchableOpacity onPress={() => go(step - 1)}>
-                  <Text style={{ color: t.sub, fontSize: 15, fontWeight: '500' }}>{loc.back}</Text>
+                  <Text style={{ color: t.sub, fontSize: 15, fontFamily: 'Manrope_500Medium' }}>{loc.back}</Text>
                 </TouchableOpacity>
               )}
             </View>
@@ -574,7 +574,7 @@ export default function ReportFlow({ onSignUp }: { onSignUp?: () => void }) {
               ))}
             </View>
             <View style={{ flexDirection: 'row', alignItems: 'center', width: 60, justifyContent: 'flex-end', gap: 10 }}>
-              <Text style={{ color: t.hint, fontSize: 13 }}>{step + 1}/{totalSteps}</Text>
+              <Text style={{ fontFamily: 'Manrope_400Regular',  color: t.hint, fontSize: 13 }}>{step + 1}/{totalSteps}</Text>
               <TouchableOpacity onPress={toggleSettings} hitSlop={{ top: 10, bottom: 10, left: 10, right: 10 }}>
                 <Ionicons name="settings-outline" size={20} color={t.sub} />
               </TouchableOpacity>
@@ -592,7 +592,7 @@ export default function ReportFlow({ onSignUp }: { onSignUp?: () => void }) {
                 backgroundColor: canContinue() ? t.accent : t.fill,
                 borderRadius: 14, paddingVertical: 16, alignItems: 'center',
               }}>
-              <Text style={{ color: canContinue() ? t.inv : t.hint, fontSize: 16, fontWeight: '600' }}>
+              <Text style={{ color: canContinue() ? t.inv : t.hint, fontSize: 16, fontFamily: 'Manrope_600SemiBold' }}>
                 {isLastBeforeDone ? loc.submit : loc.continue}
               </Text>
             </TouchableOpacity>
@@ -615,14 +615,14 @@ export default function ReportFlow({ onSignUp }: { onSignUp?: () => void }) {
               }]
             }}>
               <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', marginBottom: 28 }}>
-                <Text style={{ color: t.text, fontSize: 22, fontWeight: '700', letterSpacing: -0.5 }}>{loc.lang_theme}</Text>
+                <Text style={{ color: t.text, fontSize: 22, fontFamily: 'Manrope_700Bold', letterSpacing: -0.5 }}>{loc.lang_theme}</Text>
                 <TouchableOpacity onPress={toggleSettings} hitSlop={{ top: 10, bottom: 10, left: 10, right: 10 }}
                   style={{ backgroundColor: t.fill, width: 32, height: 32, borderRadius: 16, alignItems: 'center', justifyContent: 'center' }}>
                   <Ionicons name="close" size={18} color={t.text} />
                 </TouchableOpacity>
               </View>
 
-              <Text style={{ color: t.sub, fontSize: 12, fontWeight: '600', textTransform: 'uppercase', letterSpacing: 1.2, marginBottom: 12 }}>{loc.sel_lang}</Text>
+              <Text style={{ color: t.sub, fontSize: 12, fontFamily: 'Manrope_600SemiBold', textTransform: 'uppercase', letterSpacing: 1.2, marginBottom: 12 }}>{loc.sel_lang}</Text>
               <View style={{ gap: 8, marginBottom: 32 }}>
                 {[
                   { id: 'EN', name: 'English', native: 'English' },
@@ -639,8 +639,8 @@ export default function ReportFlow({ onSignUp }: { onSignUp?: () => void }) {
                         borderWidth: 1.5, borderColor: on ? t.text : 'transparent'
                       }}>
                       <View>
-                        <Text style={{ color: t.text, fontSize: 16, fontWeight: on ? '600' : '500' }}>{l.native}</Text>
-                        <Text style={{ color: t.sub, fontSize: 12, marginTop: 2 }}>{l.name}</Text>
+                        <Text style={{ color: t.text, fontSize: 16, fontFamily: on ? 'Manrope_600SemiBold' : 'Manrope_500Medium' }}>{l.native}</Text>
+                        <Text style={{ fontFamily: 'Manrope_400Regular',  color: t.sub, fontSize: 12, marginTop: 2 }}>{l.name}</Text>
                       </View>
                       {on && <Ionicons name="checkmark-circle" size={22} color={t.text} />}
                     </TouchableOpacity>
@@ -648,7 +648,7 @@ export default function ReportFlow({ onSignUp }: { onSignUp?: () => void }) {
                 })}
               </View>
 
-              <Text style={{ color: t.sub, fontSize: 12, fontWeight: '600', textTransform: 'uppercase', letterSpacing: 1.2, marginBottom: 12 }}>{loc.appearance}</Text>
+              <Text style={{ color: t.sub, fontSize: 12, fontFamily: 'Manrope_600SemiBold', textTransform: 'uppercase', letterSpacing: 1.2, marginBottom: 12 }}>{loc.appearance}</Text>
               <View style={{ flexDirection: 'row', gap: 12 }}>
                 {[
                   { id: 'light', name: loc.light, icon: 'sunny-outline' },
@@ -664,7 +664,7 @@ export default function ReportFlow({ onSignUp }: { onSignUp?: () => void }) {
                         borderWidth: 1.5, borderColor: on ? t.text : 'transparent'
                       }}>
                       <Ionicons name={m.icon as any} size={18} color={on ? t.text : t.sub} />
-                      <Text style={{ color: on ? t.text : t.sub, fontSize: 15, fontWeight: on ? '600' : '500' }}>{m.name}</Text>
+                      <Text style={{ color: on ? t.text : t.sub, fontSize: 15, fontFamily: on ? 'Manrope_600SemiBold' : 'Manrope_500Medium' }}>{m.name}</Text>
                     </TouchableOpacity>
                   );
                 })}
@@ -697,29 +697,29 @@ function Done({ t, mode, reset, onSignUp, loc }: { t: Th; mode: string; reset: (
         <Ionicons name="checkmark" size={28} color="#fff" />
       </Animated.View>
       <Animated.View style={{ opacity: fd, alignItems: 'center', width: '100%' }}>
-        <Text style={{ color: t.text, fontSize: 24, fontWeight: '700', marginBottom: 8 }}>{loc.thanks}</Text>
+        <Text style={{ color: t.text, fontSize: 24, fontFamily: 'Manrope_700Bold', marginBottom: 8 }}>{loc.thanks}</Text>
         <View style={{ backgroundColor: t.card, borderRadius: 14, paddingVertical: 18, width: '100%', alignItems: 'center', marginBottom: 28 }}>
-          <Text style={{ color: t.hint, fontSize: 10, fontWeight: '600', letterSpacing: 1, textTransform: 'uppercase', marginBottom: 4 }}>{loc.rep_near}</Text>
-          <Text style={{ color: t.text, fontSize: 32, fontWeight: '700' }}>47</Text>
-          <Text style={{ color: t.sub, fontSize: 12, marginTop: 2 }}>{loc.pima}</Text>
+          <Text style={{ color: t.hint, fontSize: 10, fontFamily: 'Manrope_600SemiBold', letterSpacing: 1, textTransform: 'uppercase', marginBottom: 4 }}>{loc.rep_near}</Text>
+          <Text style={{ color: t.text, fontSize: 32, fontFamily: 'Manrope_700Bold' }}>47</Text>
+          <Text style={{ fontFamily: 'Manrope_400Regular',  color: t.sub, fontSize: 12, marginTop: 2 }}>{loc.pima}</Text>
         </View>
         <TouchableOpacity activeOpacity={0.8}
           style={{ backgroundColor: t.card, borderRadius: 14, paddingVertical: 14, width: '100%', alignItems: 'center', marginBottom: 10, flexDirection: 'row', justifyContent: 'center', gap: 8 }}>
           <Ionicons name="map-outline" size={16} color={t.text} />
-          <Text style={{ color: t.text, fontSize: 15, fontWeight: '500' }}>{loc.view_map}</Text>
+          <Text style={{ color: t.text, fontSize: 15, fontFamily: 'Manrope_500Medium' }}>{loc.view_map}</Text>
         </TouchableOpacity>
         <TouchableOpacity activeOpacity={0.8}
           onPress={() => { Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light); reset(); }}
           style={{ backgroundColor: t.accent, borderRadius: 14, paddingVertical: 14, width: '100%', alignItems: 'center', flexDirection: 'row', justifyContent: 'center', gap: 8, marginBottom: 10 }}>
           <Ionicons name="create-outline" size={16} color={t.inv} />
-          <Text style={{ color: t.inv, fontSize: 15, fontWeight: '600' }}>{loc.rep_anon}</Text>
+          <Text style={{ color: t.inv, fontSize: 15, fontFamily: 'Manrope_600SemiBold' }}>{loc.rep_anon}</Text>
         </TouchableOpacity>
         {onSignUp && (
           <TouchableOpacity activeOpacity={0.8}
             onPress={() => { Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light); onSignUp(); }}
             style={{ backgroundColor: t.card, borderRadius: 14, paddingVertical: 14, width: '100%', alignItems: 'center', flexDirection: 'row', justifyContent: 'center', gap: 8 }}>
             <Ionicons name="person-add-outline" size={16} color={t.text} />
-            <Text style={{ color: t.text, fontSize: 15, fontWeight: '500' }}>{loc.signup}</Text>
+            <Text style={{ color: t.text, fontSize: 15, fontFamily: 'Manrope_500Medium' }}>{loc.signup}</Text>
           </TouchableOpacity>
         )}
       </Animated.View>

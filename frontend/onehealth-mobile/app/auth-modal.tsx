@@ -53,14 +53,14 @@ export default function AuthModal() {
 
               {/* Skip at top */}
               <TouchableOpacity activeOpacity={0.7} onPress={skip} style={{ alignSelf: 'flex-end', marginTop: 8, paddingVertical: 8, paddingLeft: 16 }}>
-                <Text style={{ color: t.sub, fontSize: 14, fontWeight: '500' }}>Skip</Text>
+                <Text style={{ color: t.sub, fontSize: 14, fontFamily: 'Manrope_500Medium' }}>Skip</Text>
               </TouchableOpacity>
 
               {/* Logo */}
               <View style={{ alignItems: 'center', marginTop: 32, marginBottom: 48 }}>
-                <Text style={{ fontSize: 36, letterSpacing: -1.2 }}>
-                  <Text style={{ color: t.hint, fontWeight: '300' }}>One</Text>
-                  <Text style={{ color: t.accent, fontWeight: '800' }}>Health</Text>
+                <Text style={{ fontFamily: 'Manrope_400Regular',  fontSize: 36, letterSpacing: -1.2 }}>
+                  <Text style={{ color: t.hint, fontFamily: 'Manrope_300Light' }}>One</Text>
+                  <Text style={{ color: t.accent, fontFamily: 'Manrope_800ExtraBold' }}>Health</Text>
                 </Text>
               </View>
 
@@ -71,7 +71,7 @@ export default function AuthModal() {
                 borderWidth: 1.5, borderColor: 'transparent'
               }}>
                 <Ionicons name="mail-outline" size={18} color={t.hint} style={{ marginRight: 10 }} />
-                <TextInput style={{ flex: 1, color: t.text, fontSize: 16, paddingVertical: 16, fontWeight: '500' }}
+                <TextInput style={{ flex: 1, color: t.text, fontSize: 16, paddingVertical: 16, fontFamily: 'Manrope_500Medium' }}
                   placeholder="Email" placeholderTextColor={t.hint}
                   value={email} onChangeText={setEmail}
                   keyboardType="email-address" autoCapitalize="none" autoCorrect={false} />
@@ -84,7 +84,7 @@ export default function AuthModal() {
                 borderWidth: 1.5, borderColor: 'transparent'
               }}>
                 <Ionicons name="lock-closed-outline" size={18} color={t.hint} style={{ marginRight: 10 }} />
-                <TextInput style={{ flex: 1, color: t.text, fontSize: 16, paddingVertical: 16, fontWeight: '500' }}
+                <TextInput style={{ flex: 1, color: t.text, fontSize: 16, paddingVertical: 16, fontFamily: 'Manrope_500Medium' }}
                   placeholder="Password" placeholderTextColor={t.hint}
                   value={pass} onChangeText={setPass}
                   secureTextEntry={!showPass} autoCapitalize="none" />
@@ -97,13 +97,13 @@ export default function AuthModal() {
               <TouchableOpacity activeOpacity={0.8} onPress={handleSubmit} disabled={!canSubmit} style={{
                 backgroundColor: canSubmit ? t.accent : t.fill, borderRadius: 14, paddingVertical: 16, alignItems: 'center',
               }}>
-                <Text style={{ color: canSubmit ? t.inv : t.hint, fontSize: 16, fontWeight: '600' }}>Sign In</Text>
+                <Text style={{ color: canSubmit ? t.inv : t.hint, fontSize: 16, fontFamily: 'Manrope_600SemiBold' }}>Sign In</Text>
               </TouchableOpacity>
 
               {/* Divider */}
               <View style={{ flexDirection: 'row', alignItems: 'center', marginVertical: 24 }}>
                 <View style={{ flex: 1, height: 1, backgroundColor: t.line }} />
-                <Text style={{ color: t.hint, fontSize: 12, marginHorizontal: 14 }}>or</Text>
+                <Text style={{ fontFamily: 'Manrope_400Regular',  color: t.hint, fontSize: 12, marginHorizontal: 14 }}>or</Text>
                 <View style={{ flex: 1, height: 1, backgroundColor: t.line }} />
               </View>
 

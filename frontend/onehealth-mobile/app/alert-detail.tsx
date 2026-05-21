@@ -41,7 +41,7 @@ const HISTORY = [
 export default function AlertDetailScreen() {
   const Section = ({ label, children }: any) => (
     <View style={{ marginTop: 24 }}>
-      <Text style={{ color: HINT, fontSize: 11, fontWeight: '600', textTransform: 'uppercase', letterSpacing: 1.2, marginBottom: 10, paddingHorizontal: 2 }}>{label}</Text>
+      <Text style={{ color: HINT, fontSize: 11, fontFamily: 'Manrope_600SemiBold', textTransform: 'uppercase', letterSpacing: 1.2, marginBottom: 10, paddingHorizontal: 2 }}>{label}</Text>
       {children}
     </View>
   );
@@ -54,7 +54,7 @@ export default function AlertDetailScreen() {
             style={{ width: 32, height: 32, borderRadius: 16, backgroundColor: FILL, alignItems: 'center', justifyContent: 'center' }}>
             <Ionicons name="arrow-back" size={18} color={TEXT} />
           </TouchableOpacity>
-          <Text style={{ fontSize: 18, fontWeight: '600', color: TEXT, marginLeft: 12 }}>Alert Detail</Text>
+          <Text style={{ fontSize: 18, fontFamily: 'Manrope_600SemiBold', color: TEXT, marginLeft: 12 }}>Alert Detail</Text>
         </View>
 
         <ScrollView showsVerticalScrollIndicator={false} contentContainerStyle={{ paddingHorizontal: 20, paddingBottom: 60 }}>
@@ -63,9 +63,9 @@ export default function AlertDetailScreen() {
           <View style={{ backgroundColor: CARD, borderRadius: 14, padding: 16, borderWidth: 1, borderColor: LINE }}>
             <View style={{ flexDirection: 'row', alignItems: 'center', gap: 8, marginBottom: 6 }}>
               <View style={{ width: 8, height: 8, borderRadius: 4, backgroundColor: '#D97706' }} />
-              <Text style={{ fontSize: 17, fontWeight: '600', color: TEXT }}>Significant Anomaly</Text>
+              <Text style={{ fontSize: 17, fontFamily: 'Manrope_600SemiBold', color: TEXT }}>Significant Anomaly</Text>
             </View>
-            <Text style={{ fontSize: 13, color: SUB }}>85719 · UofA Campus Area</Text>
+            <Text style={{ fontFamily: 'Manrope_400Regular',  fontSize: 13, color: SUB }}>85719 · UofA Campus Area</Text>
           </View>
 
           {/* Stats */}
@@ -76,8 +76,8 @@ export default function AlertDetailScreen() {
               { num: '\u2191', label: 'accelerating' },
             ].map((s, i) => (
               <View key={i} style={{ flex: 1, backgroundColor: CARD, borderRadius: 14, paddingVertical: 16, alignItems: 'center', borderWidth: 1, borderColor: LINE }}>
-                <Text style={{ color: TEXT, fontSize: 18, fontWeight: '700' }}>{s.num}</Text>
-                <Text style={{ color: HINT, fontSize: 10, marginTop: 4 }}>{s.label}</Text>
+                <Text style={{ color: TEXT, fontSize: 18, fontFamily: 'Manrope_700Bold' }}>{s.num}</Text>
+                <Text style={{ fontFamily: 'Manrope_400Regular',  color: HINT, fontSize: 10, marginTop: 4 }}>{s.label}</Text>
               </View>
             ))}
           </View>
@@ -85,7 +85,7 @@ export default function AlertDetailScreen() {
           {/* AI Explanation */}
           <Section label="AI Explanation">
             <View style={{ backgroundColor: CARD, borderRadius: 14, padding: 16, borderWidth: 1, borderColor: LINE }}>
-              <Text style={{ color: SUB, fontSize: 14, lineHeight: 22 }}>
+              <Text style={{ fontFamily: 'Manrope_400Regular',  color: SUB, fontSize: 14, lineHeight: 22 }}>
                 Respiratory reports in the UofA area increased from 4/week to 13 — a 225% spike.
                 This exceeds 3.1 standard deviations above the CDC seasonal norm. Pollen and air quality
                 are within normal ranges, so this spike is not explained by environmental factors.
@@ -101,8 +101,8 @@ export default function AlertDetailScreen() {
                 <React.Fragment key={i}>
                   <View style={{ flexDirection: 'row', alignItems: 'center', paddingVertical: 12, paddingHorizontal: 16 }}>
                     <Ionicons name={c.icon} size={15} color={HINT} style={{ marginRight: 12 }} />
-                    <Text style={{ fontSize: 14, color: TEXT, flex: 1 }}>{c.label}</Text>
-                    <Text style={{ fontSize: 13, color: SUB }}>{c.val}</Text>
+                    <Text style={{ fontFamily: 'Manrope_400Regular',  fontSize: 14, color: TEXT, flex: 1 }}>{c.label}</Text>
+                    <Text style={{ fontFamily: 'Manrope_400Regular',  fontSize: 13, color: SUB }}>{c.val}</Text>
                   </View>
                   {i < CONTEXT_DATA.length - 1 && <View style={{ height: 0.5, backgroundColor: LINE, marginLeft: 43 }} />}
                 </React.Fragment>
@@ -115,14 +115,14 @@ export default function AlertDetailScreen() {
             <View style={{ backgroundColor: CARD, borderRadius: 14, padding: 16, borderWidth: 1, borderColor: LINE }}>
               {RECS.map((r, i) => (
                 <View key={i} style={{ flexDirection: 'row', gap: 10, marginBottom: i < RECS.length - 1 ? 10 : 0 }}>
-                  <Text style={{ color: GREEN, fontSize: 13, fontWeight: '600', width: 16 }}>{i + 1}.</Text>
-                  <Text style={{ color: SUB, fontSize: 14, flex: 1, lineHeight: 20 }}>{r}</Text>
+                  <Text style={{ color: GREEN, fontSize: 13, fontFamily: 'Manrope_600SemiBold', width: 16 }}>{i + 1}.</Text>
+                  <Text style={{ fontFamily: 'Manrope_400Regular',  color: SUB, fontSize: 14, flex: 1, lineHeight: 20 }}>{r}</Text>
                 </View>
               ))}
             </View>
           </Section>
 
-          <Text style={{ color: HINT, fontSize: 11, textAlign: 'center', marginTop: 14 }}>
+          <Text style={{ fontFamily: 'Manrope_400Regular',  color: HINT, fontSize: 11, textAlign: 'center', marginTop: 14 }}>
             Not medical advice. For emergencies call 911.
           </Text>
 
@@ -131,11 +131,11 @@ export default function AlertDetailScreen() {
             <View style={{ backgroundColor: CARD, borderRadius: 14, padding: 16, borderWidth: 1, borderColor: LINE }}>
               {HISTORY.map((h, i) => (
                 <View key={i} style={{ flexDirection: 'row', alignItems: 'center', gap: 10, marginBottom: i < HISTORY.length - 1 ? 10 : 0 }}>
-                  <Text style={{ color: h.year === 'Now' ? GREEN : HINT, fontSize: 12, fontWeight: '600', width: 32 }}>{h.year}</Text>
+                  <Text style={{ color: h.year === 'Now' ? GREEN : HINT, fontSize: 12, fontFamily: 'Manrope_600SemiBold', width: 32 }}>{h.year}</Text>
                   <View style={{ flex: 1, height: 16, backgroundColor: FILL, borderRadius: 4, overflow: 'hidden' }}>
                     <View style={{ width: `${(h.count / h.max) * 100}%`, height: '100%', backgroundColor: h.year === 'Now' ? GREEN : '#D5E8D4', borderRadius: 4 }} />
                   </View>
-                  <Text style={{ color: h.year === 'Now' ? GREEN : HINT, fontSize: 12, fontWeight: '600', width: 20, textAlign: 'right' }}>{h.count}</Text>
+                  <Text style={{ color: h.year === 'Now' ? GREEN : HINT, fontSize: 12, fontFamily: 'Manrope_600SemiBold', width: 20, textAlign: 'right' }}>{h.count}</Text>
                 </View>
               ))}
             </View>

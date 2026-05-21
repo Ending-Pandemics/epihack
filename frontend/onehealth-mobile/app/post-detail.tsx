@@ -39,35 +39,35 @@ export default function PostDetailScreen() {
             style={{ width: 32, height: 32, borderRadius: 16, backgroundColor: FILL, alignItems: 'center', justifyContent: 'center' }}>
             <Ionicons name="arrow-back" size={18} color={TEXT} />
           </TouchableOpacity>
-          <Text style={{ fontSize: 18, fontWeight: '600', color: TEXT, marginLeft: 12 }}>Post</Text>
+          <Text style={{ fontSize: 18, fontFamily: 'Manrope_600SemiBold', color: TEXT, marginLeft: 12 }}>Post</Text>
         </View>
 
         <KeyboardAvoidingView style={{ flex: 1 }} behavior={Platform.OS === 'ios' ? 'padding' : undefined}>
           <ScrollView showsVerticalScrollIndicator={false} contentContainerStyle={{ paddingHorizontal: 20, paddingBottom: 20 }}>
 
             <View style={{ backgroundColor: CARD, borderRadius: 14, padding: 16, borderWidth: 1, borderColor: LINE, marginBottom: 20 }}>
-              <Text style={{ color: HINT, fontSize: 12 }}>{post.author} · {post.area} · {post.time}</Text>
-              <Text style={{ color: BODY, fontSize: 15, lineHeight: 22, marginTop: 8 }}>{post.body}</Text>
+              <Text style={{ fontFamily: 'Manrope_400Regular',  color: HINT, fontSize: 12 }}>{post.author} · {post.area} · {post.time}</Text>
+              <Text style={{ fontFamily: 'Manrope_400Regular',  color: BODY, fontSize: 15, lineHeight: 22, marginTop: 8 }}>{post.body}</Text>
               <View style={{ flexDirection: 'row', alignItems: 'center', gap: 14, marginTop: 10 }}>
                 <View style={{ flexDirection: 'row', alignItems: 'center', gap: 4 }}>
                   <Ionicons name="arrow-up-outline" size={14} color={HINT} />
-                  <Text style={{ color: HINT, fontSize: 12, fontWeight: '500' }}>{post.votes}</Text>
+                  <Text style={{ color: HINT, fontSize: 12, fontFamily: 'Manrope_500Medium' }}>{post.votes}</Text>
                 </View>
                 <View style={{ flexDirection: 'row', alignItems: 'center', gap: 4 }}>
                   <Ionicons name="chatbubble-outline" size={12} color={HINT} />
-                  <Text style={{ color: HINT, fontSize: 12 }}>{post.comments}</Text>
+                  <Text style={{ fontFamily: 'Manrope_400Regular',  color: HINT, fontSize: 12 }}>{post.comments}</Text>
                 </View>
               </View>
-              {post.aiTag && <Text style={{ color: GREEN, fontSize: 12, marginTop: 8 }}>{post.aiTag}</Text>}
+              {post.aiTag && <Text style={{ fontFamily: 'Manrope_400Regular',  color: GREEN, fontSize: 12, marginTop: 8 }}>{post.aiTag}</Text>}
             </View>
 
-            <Text style={{ color: HINT, fontSize: 11, fontWeight: '600', textTransform: 'uppercase', letterSpacing: 1.2, marginBottom: 10, paddingHorizontal: 2 }}>Replies</Text>
+            <Text style={{ color: HINT, fontSize: 11, fontFamily: 'Manrope_600SemiBold', textTransform: 'uppercase', letterSpacing: 1.2, marginBottom: 10, paddingHorizontal: 2 }}>Replies</Text>
             {REPLIES.map((r, i) => (
               <View key={i} style={{ backgroundColor: CARD, borderRadius: 14, padding: 14, marginBottom: 8, borderWidth: 1, borderColor: LINE }}>
-                <Text style={{ color: r.verified ? GREEN : HINT, fontSize: 12, fontWeight: r.verified ? '600' : '400' }}>
+                <Text style={{ fontFamily: 'Manrope_400Regular',  color: r.verified ? GREEN : HINT, fontSize: 12, fontWeight: r.verified ? '600' : '400' }}>
                   {r.author} · {r.time}
                 </Text>
-                <Text style={{ color: BODY, fontSize: 14, lineHeight: 20, marginTop: 6 }}>{r.body}</Text>
+                <Text style={{ fontFamily: 'Manrope_400Regular',  color: BODY, fontSize: 14, lineHeight: 20, marginTop: 6 }}>{r.body}</Text>
               </View>
             ))}
           </ScrollView>
