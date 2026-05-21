@@ -1,6 +1,5 @@
 name: Deploy HealthMind to AWS
 
-# Runs automatically every time you push to main
 on:
   push:
     branches: [main]
@@ -10,7 +9,6 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      # Step 1 - Connect to AWS server and deploy
       - name: Deploy to AWS EC2
         uses: appleboy/ssh-action@master
         with:
@@ -29,4 +27,4 @@ jobs:
               --restart always \
               --name healthmind \
               healthmind
-            echo "✅ HealthMind deployed successfully"
+            echo "HealthMind deployed successfully"
