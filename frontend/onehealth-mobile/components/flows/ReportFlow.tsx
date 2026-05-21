@@ -10,7 +10,7 @@ import * as Haptics from 'expo-haptics';
 import * as Location from 'expo-location';
 import * as ImagePicker from 'expo-image-picker';
 import { Ionicons } from '@expo/vector-icons';
-import { getLang } from '@/utils/storage';
+import { getLang, setLang as setStorageLang } from '@/utils/storage';
 
 // ─── Theme — matches OneHealth splash ────────────────────────
 const P = {
@@ -636,7 +636,7 @@ export default function ReportFlow({ onSignUp, onSubmitComplete }: { onSignUp?: 
                   const on = lang === l.id;
                   return (
                     <TouchableOpacity key={l.id} activeOpacity={0.7}
-                      onPress={() => { Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light); setLang(l.id as any); setTimeout(toggleSettings, 300); }}
+                      onPress={() => { Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light); setLangState(l.id as any); setStorageLang(l.id); setTimeout(toggleSettings, 300); }}
                       style={{
                         flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between',
                         backgroundColor: on ? t.selBg : t.fill, borderRadius: 16, paddingVertical: 16, paddingHorizontal: 20,

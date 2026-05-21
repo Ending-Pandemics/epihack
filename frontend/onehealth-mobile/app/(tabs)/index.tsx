@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useCallback, useRef } from 'react';
 import {
-  View, Text, ScrollView, TouchableOpacity, RefreshControl, Alert, Animated,
+  View, Text, ScrollView, TouchableOpacity, RefreshControl, Alert, Animated, Modal,
 } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { StatusBar } from 'expo-status-bar';
@@ -41,19 +41,58 @@ const RECENT = [
 ];
 
 export default function HomeScreen() {
-  const [showForm, setShowForm] = useState<boolean>(true);
   const [showSuccess, setShowSuccess] = useState(false);
   const successAnim = useRef(new Animated.Value(0)).current;
   const [refreshing, setRefreshing] = useState(false);
   const [zip, setZip] = useState('85719');
   const [stats, setStats] = useState({ count: 0, streak: 0 });
 
+  // App Open Flow States
+  const [showForm, setShowForm] = useState(true);
+  const [showSplash, setShowSplash] = useState(true);
+  
+  // ─── Splash Animations ───
+  const textOpacity = useRef(new Animated.Value(0)).current;
+  const textSlide = useRef(new Animated.Value(12)).current;
+  const tagOpacity = useRef(new Animated.Value(0)).current;
+  const pulse1 = useRef(new Animated.Value(0.5)).current;
+  const pulse2 = useRef(new Animated.Value(0.3)).current;
+  const screenOpacity = useRef(new Animated.Value(1)).current;
+
   const load = useCallback(async () => {
     setZip(await getUserZip());
     setStats(await getReportStats());
   }, []);
 
-  useEffect(() => { load(); }, []);
+  useEffect(() => { 
+    load(); 
+    
+    // Splash Screen Sequence
+    Animated.loop(
+      Animated.sequence([
+        Animated.timing(pulse1, { toValue: 1, duration: 1200, useNativeDriver: true }),
+        Animated.timing(pulse1, { toValue: 0.5, duration: 1200, useNativeDriver: true }),
+      ])
+    ).start();
+    Animated.loop(
+      Animated.sequence([
+        Animated.timing(pulse2, { toValue: 1, duration: 1500, useNativeDriver: true }),
+        Animated.timing(pulse2, { toValue: 0.3, duration: 1500, useNativeDriver: true }),
+      ])
+    ).start();
+    Animated.parallel([
+      Animated.timing(textOpacity, { toValue: 1, duration: 600, useNativeDriver: true }),
+      Animated.timing(textSlide, { toValue: 0, duration: 600, useNativeDriver: true }),
+    ]).start();
+    Animated.sequence([
+      Animated.delay(900),
+      Animated.timing(tagOpacity, { toValue: 1, duration: 400, useNativeDriver: true }),
+    ]).start();
+    Animated.sequence([
+      Animated.delay(2600),
+      Animated.timing(screenOpacity, { toValue: 0, duration: 400, useNativeDriver: true }),
+    ]).start(() => setShowSplash(false));
+  }, []);
 
   const onRefresh = useCallback(async () => {
     setRefreshing(true); await load(); setRefreshing(false);
@@ -68,19 +107,7 @@ export default function HomeScreen() {
     ]).start(() => setShowSuccess(false));
   };
 
-  // ─── Always show report form on first open ─────────────────
-  if (showForm) {
-    return (
-      <ReportFlow onSignUp={() => router.push({ pathname: '/auth-modal', params: { mode: 'signup' } })}
-        onSubmitComplete={async () => {
-          await setFirstReportComplete();
-          await incrementReportCount();
-          setShowForm(false);
-          await load();
-          setTimeout(showSuccessToast, 400);
-        }} />
-    );
-  }
+
 
   // ─── Shared helpers (matches ReportFlow exactly) ───────────
   const SLabel = ({ children, icon }: { children: string; icon?: keyof typeof Ionicons.glyphMap }) => (
@@ -92,6 +119,44 @@ export default function HomeScreen() {
 
   return (
     <View style={{ flex: 1, backgroundColor: t.bg }}>
+      {/* ─── App Open Flow (Splash -> Form) ─── */}
+      <Modal visible={showForm} animationType="fade" presentationStyle="fullScreen">
+        <View style={{ flex: 1, backgroundColor: t.bg }}>
+          <ReportFlow onSubmitComplete={() => {
+            setShowForm(false);
+            setTimeout(() => showSuccessToast(), 400);
+            load(); // Reload dashboard stats
+          }} />
+          
+          {showSplash && (
+            <Animated.View style={{
+              position: 'absolute', top: 0, left: 0, right: 0, bottom: 0,
+              backgroundColor: '#FAFAFA', alignItems: 'center', justifyContent: 'center',
+              opacity: screenOpacity, zIndex: 999
+            }}>
+              <StatusBar style="dark" />
+              <Animated.View style={{
+                position: 'absolute', width: 140, height: 140, borderRadius: 70,
+                backgroundColor: '#E8F5E9', opacity: pulse2, transform: [{ scale: pulse2 }],
+              }} />
+              <Animated.View style={{
+                position: 'absolute', width: 100, height: 100, borderRadius: 50,
+                backgroundColor: '#E8F5E9', opacity: pulse1, transform: [{ scale: pulse1 }],
+              }} />
+              <Animated.View style={{ opacity: textOpacity, transform: [{ translateY: textSlide }] }}>
+                <Text style={{ fontSize: 48, letterSpacing: -1.5, color: '#111' }}>
+                  <Text style={{ fontWeight: '300' }}>One</Text>
+                  <Text style={{ fontWeight: '800', color: '#0B6623' }}>Health</Text>
+                </Text>
+              </Animated.View>
+              <Animated.Text style={{ opacity: tagOpacity, color: '#888', marginTop: 8, fontSize: 13, letterSpacing: 1.5, textTransform: 'uppercase' }}>
+                Arizona
+              </Animated.Text>
+            </Animated.View>
+          )}
+        </View>
+      </Modal>
+
       <SafeAreaView style={{ flex: 1 }} edges={['top']}>
         <StatusBar style="dark" />
 
@@ -102,17 +167,27 @@ export default function HomeScreen() {
           {/* ─── Header ──────────────────────────────────────── */}
           <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', paddingHorizontal: 24, paddingTop: 8, paddingBottom: 4 }}>
             <View>
-              <Text style={{ fontSize: 28, fontWeight: '700', color: t.text, letterSpacing: -0.6 }}>OneHealth</Text>
+              <Text style={{ fontSize: 28, letterSpacing: -1.2 }}>
+                <Text style={{ color: t.hint, fontWeight: '300' }}>One</Text>
+                <Text style={{ color: t.accent, fontWeight: '800' }}>Health</Text>
+              </Text>
               <View style={{ flexDirection: 'row', alignItems: 'center', gap: 4, marginTop: 2 }}>
                 <Ionicons name="location-outline" size={12} color={t.sub} />
                 <Text style={{ color: t.sub, fontSize: 13 }}>Tucson, AZ · {zip}</Text>
               </View>
             </View>
-            <TouchableOpacity onPress={() => { Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light); router.push('/notifications'); }}
-              style={{ width: 38, height: 38, borderRadius: 11, backgroundColor: t.fill, alignItems: 'center', justifyContent: 'center' }}>
-              <Ionicons name="notifications-outline" size={18} color={t.sub} />
-              <View style={{ position: 'absolute', top: 8, right: 9, width: 6, height: 6, borderRadius: 3, backgroundColor: '#E53935' }} />
-            </TouchableOpacity>
+            <View style={{ flexDirection: 'row', gap: 8, alignItems: 'center' }}>
+              <View style={{ flexDirection: 'row', alignItems: 'center', gap: 4, backgroundColor: '#FFF3E0', paddingHorizontal: 10, height: 38, borderRadius: 11, borderWidth: 1.5, borderColor: '#FFE0B2' }}>
+                <Ionicons name="flame" size={16} color="#F57C00" />
+                <Text style={{ fontSize: 14, fontWeight: '800', color: '#F57C00' }}>3</Text>
+              </View>
+
+              <TouchableOpacity onPress={() => { Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light); router.push('/notifications'); }}
+                style={{ width: 38, height: 38, borderRadius: 11, backgroundColor: t.fill, alignItems: 'center', justifyContent: 'center' }}>
+                <Ionicons name="notifications-outline" size={18} color={t.sub} />
+                <View style={{ position: 'absolute', top: 8, right: 9, width: 6, height: 6, borderRadius: 3, backgroundColor: '#E53935' }} />
+              </TouchableOpacity>
+            </View>
           </View>
 
           {/* ─── Environment Vitals ──────────────────────────── */}
@@ -204,7 +279,7 @@ export default function HomeScreen() {
             <View style={{ flexDirection: 'row', gap: 10 }}>
               {[
                 { icon: 'camera-outline' as const, label: 'Photo', onPress: async () => {
-                  const r = await ImagePicker.launchImageLibraryAsync({ mediaTypes: ['images'], quality: 0.6 });
+                  const r = await ImagePicker.launchImageLibraryAsync({ mediaTypes: ImagePicker.MediaTypeOptions.Images, quality: 0.6 });
                   if (!r.canceled) router.push('/report-modal');
                 }},
                 { icon: 'mic-outline' as const, label: 'Voice', onPress: () => Alert.alert('Coming Soon', 'Voice reporting is coming soon.') },
